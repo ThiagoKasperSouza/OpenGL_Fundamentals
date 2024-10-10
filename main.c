@@ -2,7 +2,6 @@
 #include "src/menu.c"
 #include "src/hello_world.c"
 #include "src/geometry.c"
-#include "src/animation.c"
 
 
 
@@ -45,10 +44,6 @@ void display() {
             break;
         case 3:
             geometry();
-            break;
-        case 4:
-            glutIdleFunc(display); // Call display repeatedly to animate
-            animation();
             break;
         default:
             exit(0);

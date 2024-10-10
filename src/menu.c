@@ -18,7 +18,6 @@ void renderMenu() {
     m->opts = (Opt[NUM_OPTS]) {
         { .name="1 - Hello World", .min_y=-0.4, .max_y=0.3 },
         { .name="2 - Geometry", .min_y=-0.4, .max_y=0.1 },
-        { .name="3 - Shaders", .min_y=-0.4, .max_y=-0.1 },
         { .name="Quit window.", .min_y=-0.4, .max_y=-0.3 },
     };
 
