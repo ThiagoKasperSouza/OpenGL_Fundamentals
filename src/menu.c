@@ -18,7 +18,8 @@ void renderMenu() {
     m->opts = (Opt[NUM_OPTS]) {
         { .name="1 - Hello World", .min_y=-0.4, .max_y=0.3 },
         { .name="2 - Geometry", .min_y=-0.4, .max_y=0.1 },
-        { .name="Quit window.", .min_y=-0.4, .max_y=-0.3 },
+        { .name="3 - Animation", .min_y=-0.4, .max_y=-0.1 },
+        { .name="q - Quit window.", .min_y=-0.4, .max_y=-0.3 },
     };
 
     glColor3f(opts_color.r, opts_color.g, opts_color.b);

@@ -1,33 +1,57 @@
 #include <GL/glut.h>
 #include <math.h>
 
-void drawSphere(GLfloat radius, GLint slices, GLint stacks) {
+ // cada vertice eh a coord de um ponto
+void drawAxis() {
+    glClear(GL_COLOR_BUFFER_BIT);
 
-    GLfloat theta, phi;
-    GLint i, j;
+    glBegin(GL_LINES);
+    // eixo x - vermelho
+    glColor3f(1.0,0.0,0.0);
+    glVertex2i(-1,0);
+    glVertex2i(1,0);
 
-    for (i = 0; i < stacks; i++) {
-        theta = i * M_PI / stacks;
-        glBegin(GL_QUAD_STRIP);
+    // eixo y - verde
+    glColor3f(0.0,1.0,0.0);
+    glVertex2i(0,-1);
+    glVertex2i(0,1);
 
-        for (j = 0; j <= slices; j++) {
-            phi = j * 2 * M_PI / slices;
-            glVertex3f(radius * sin(theta) * cos(phi), radius * sin(theta) * sin(phi), radius * cos(theta));
-            glVertex3f(radius * sin((theta + M_PI / stacks)) * cos(phi), radius * sin((theta + M_PI / stacks)) * sin(phi), radius * cos((theta + M_PI / stacks)));
-        }
-        glEnd();
+    glEnd();
+}
+
+/*
+    Usa angulo em rad, que é PI/180
+    Então pra 360, tem que fazer um loop pra cada fatia,
+    criando assim uma literal varredura do angulo
+    hip é o raio, X e Y É oq vai ser usado
+    cos = adj(X)/hip -> adj(X) = cos . hip
+    sen = op(Y)/hip -> op(Y) = sen . hip
+
+*/
+void drawCircle(double radius) {
+    gluOrtho2D(0,WINDOW_WIDTH,0,WINDOW_HEIGHT); // origem 0,0
+    glBegin(GL_POLYGON);
+    float theta;
+
+    for(uint i=0;i<360; i++) {
+        theta = i * M_PI /180;
+        // PRA CALCULAR A FATIA, É COS(THETA) EM X E SEN(THETA) EM Y
+        double x = cos(theta)*radius;
+        double y = sin(theta)*radius;
+        glColor3f(0.5,0.5,1);
+       // printf("angulo gerado - X %.2f, Y %.2f\n", x,y);
+        glVertex2f(80+WINDOW_WIDTH/2+x,80+WINDOW_HEIGHT/2+y);
+     
     }
+    glEnd();
 }
 void geometry() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    // Set up the sphere's properties
-    GLfloat radius = 1.0;
-    GLint slices = 9999;
-    GLint stacks = 8;
+    drawAxis();
 
-    // Draw the sphere
-    drawSphere(radius, slices, stacks);
+    // Draw circle
+   drawCircle(WINDOW_WIDTH/8);
 
     glFlush();
 }

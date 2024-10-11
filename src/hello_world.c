@@ -1,7 +1,6 @@
 #include <GL/glut.h>
 
 void hello_world() {
-    printf("ta aqui");
     glClear(GL_COLOR_BUFFER_BIT);
 
     glMatrixMode(GL_MODELVIEW);
