@@ -3,6 +3,8 @@
 
 
 void renderMenu() {
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
     glClear(GL_COLOR_BUFFER_BIT);
     
     Menu *m = malloc(sizeof(Menu));

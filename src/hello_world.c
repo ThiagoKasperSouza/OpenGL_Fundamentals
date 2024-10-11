@@ -1,6 +1,7 @@
-#include <GL/glut.h>
 
 void hello_world() {
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
     glClear(GL_COLOR_BUFFER_BIT);
 
     glMatrixMode(GL_MODELVIEW);

@@ -2,10 +2,9 @@
 #define _CONSTANTS_H_
 #include <stdio.h>
 #include <string.h>
-#include <GL/glut.h>
 #include "Components.h"
 
-#define FRAMERATE 20
+#define FRAMERATE 45
 #define RESOLUTION 1  //0=160x120 1=360x240 4=640x480
 #define PIXEL_SCALE 4/RESOLUTION 
 #define WIDTH 160

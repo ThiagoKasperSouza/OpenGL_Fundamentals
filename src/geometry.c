@@ -1,23 +1,3 @@
-#include <GL/glut.h>
-#include <math.h>
-
- // cada vertice eh a coord de um ponto
-void drawAxis() {
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    glBegin(GL_LINES);
-    // eixo x - vermelho
-    glColor3f(1.0,0.0,0.0);
-    glVertex2i(-1,0);
-    glVertex2i(1,0);
-
-    // eixo y - verde
-    glColor3f(0.0,1.0,0.0);
-    glVertex2i(0,-1);
-    glVertex2i(0,1);
-
-    glEnd();
-}
 
 /*
     Usa angulo em rad, que é PI/180
@@ -29,6 +9,8 @@ void drawAxis() {
 
 */
 void drawCircle(double radius) {
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
     gluOrtho2D(0,WINDOW_WIDTH,0,WINDOW_HEIGHT); // origem 0,0
     glBegin(GL_POLYGON);
     float theta;
